@@ -23,11 +23,60 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: Return an AsymmetricView (104)
     // TODO: Pass Category variable to AsymmetricView (104)
-    return const Scaffold(
+    return Scaffold(
       // TODO: Add app bar (102)
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple[400],
+        iconTheme: const IconThemeData(
+          color: Colors.white, // Color de todos los íconos
+        ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            semanticLabel: 'menu',
+          ),
+          onPressed: () {
+            print('Menu button');
+          },
+        ),
+        title: const Text(
+          'SHRINE',
+          style: TextStyle(
+            color: Colors.white, // Color del texto
+            fontSize: 22, // Tamaño opcional
+            fontWeight: FontWeight.bold, // Negrita opcional
+          ),
+        ),
+        // TODO: Add trailing buttons (102)
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.search,
+              semanticLabel: 'search',
+            ),
+            onPressed: () {
+              print('Search button');
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.tune,
+              semanticLabel: 'filter',
+            ),
+            onPressed: () {
+              print('Filter button');
+            },
+          ),
+        ],
+      ),
       // TODO: Add a grid view (102)
-      body: Center(
-        child: Text('You did it!'),
+      // TODO: Add a grid view (102)
+      body: GridView.count(
+        crossAxisCount: 2,
+        padding: const EdgeInsets.all(16.0),
+        childAspectRatio: 8.0 / 9.0,
+        // TODO: Build a grid of cards (102)
+        children: <Widget>[Card()],
       ),
       // TODO: Set resizeToAvoidBottomInset (101)
       resizeToAvoidBottomInset: false,
