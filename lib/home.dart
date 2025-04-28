@@ -20,7 +20,9 @@ import 'model/products_repository.dart';
 import 'supplemental/asymmetric_view.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final Category category;
+
+  const HomePage({this.category = Category.all, Key? key}) : super(key: key);
 
   // TODO: Make a collection of cards (102)
   // TODO: Make a collection of cards (102)
@@ -91,58 +93,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: Return an AsymmetricView (104)
     // TODO: Pass Category variable to AsymmetricView (104)
-    return Scaffold(
-      // TODO: Add app bar (102)
-      appBar: AppBar(
-        backgroundColor:
-            Theme.of(context).colorScheme.primary, //aca deberia ir el primary
-        iconTheme: const IconThemeData(
-          color: Colors.white, // Color de todos los íconos
-        ),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
-          ),
-          onPressed: () {
-            print('Menu button');
-          },
-        ),
-        title: const Text(
-          'SHRINE',
-          style: TextStyle(
-            color: Colors.white, // Color del texto
-            fontSize: 22, // Tamaño opcional
-            fontWeight: FontWeight.bold, // Negrita opcional
-          ),
-        ),
-        // TODO: Add trailing buttons (102)
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              semanticLabel: 'search',
-            ),
-            onPressed: () {
-              print('Search button');
-            },
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.tune,
-              semanticLabel: 'filter',
-            ),
-            onPressed: () {
-              print('Filter button');
-            },
-          ),
-        ],
-      ),
-      // TODO: Add a grid view (102)
-      body: AsymmetricView(
-          products: ProductsRepository.loadProducts(Category.all)),
-      // TODO: Set resizeToAvoidBottomInset (101)
-      resizeToAvoidBottomInset: false,
+    return AsymmetricView(
+      products: ProductsRepository.loadProducts(category),
     );
   }
 }
